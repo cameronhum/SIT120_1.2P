@@ -64,6 +64,4 @@ button:hover {
         font-size: calc(1.5rem + 7vw);
     }
 }
-@media (max-width: 1023px) {
-    
-}
+
