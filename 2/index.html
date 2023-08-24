@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your website description here">
+    <title>JS Website</title>
+</head>
+
+<body>
+
+    <input id="date" type="date" />
+    <input id="num1" type="number" />
+    <input id="num2" type="number" />
+    <input id="string" type="text" />
+    <p id="output"></p>
+    <button id="submitbutton">submit</button>
+    <script>
+        //c. Array methods[at least 5; include both string and number types etc.]
+        document.getElementById("submitbutton").addEventListener("click", function () {
+            let array = []
+            let date = new Date(document.getElementById('date').value);
+
+            let age = getAge(date)
+
+            let d = new Date();
+            array.push(d.toISOString());
+            array.push(d.toUTCString());
+            array.unshift(d.toDateString());
+            array.unshift(d.toString());
+            let num1 = document.getElementById('num1').value;
+            let num2 = document.getElementById('num2').value;
+            array.push(...doMath(num1, num2));
+            let string = document.getElementById('string').value;
+            string = string.toLowerCase();
+            string = string.replaceAll('a', 'Z');
+            string = string.slice(1, 4);
+            array.push(string);
+            array.push(string.length);
+            array.unshift();
+            array.pop();
+
+            document.getElementById("output").textContent = "The output array after all operations is: " + array.join(', ');
+
+        });
+        function doMath(num1, num2) {
+            let results = [];
+            if (Number.isSafeInteger(num1) && Number.isSafeInteger(num2)) {
+                results.push((num1 / 3).toPrecision(2));
+                results.push((num2 / 3).toPrecision(2));
+                results.push(num1.toExponential(num2));
+                results.push(num1 + num2)
+                results[3] = results[3].toString()
+                results[4] = results[3].concat(" ", 'Second String');
+                results[5] = parseInt(result[4]);
+
+            }
+            return results;
+        }
+        function getAge(bday) {
+
+            let today = new Date();
+            let age = today.getFullYear() - bday.getFullYear();
+
+            if (today < new Date(today.getFullYear(), bday.getMonth(), bday.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+
+
+    </script>
+</body>
+</html>
